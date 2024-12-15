@@ -1,7 +1,6 @@
 package com.example.suman.CRUD.controller;
 
-import ch.qos.logback.core.encoder.Encoder;
-import com.example.suman.CRUD.model.AppUser;
+import com.example.suman.CRUD.model.User;
 import com.example.suman.CRUD.service.UserService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +29,18 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public List<AppUser> user() {
+    public List<User> user() {
         return userService.getAllUser();
     }
 
     @GetMapping("/user/{id}")
-    public Optional<AppUser> singleUser(@PathVariable Long id) {
+    public Optional<User> singleUser(@PathVariable Long id) {
         System.out.println(id + " is id from localhost");
         return userService.getOneUser(id);
     }
 
     @PostMapping("/user")
-    public AppUser createUser(@RequestBody @NotNull AppUser users) {
+    public User createUser(@RequestBody @NotNull User users) {
         users.setPassword(passwordEncoder.encode(users.getPassword())); // Encrypting the password before saving
         return userService.saveUser(users);
     }

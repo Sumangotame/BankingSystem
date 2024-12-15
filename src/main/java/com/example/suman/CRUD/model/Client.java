@@ -17,5 +17,5 @@ public class Client {
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false)
     @JsonIgnore
-    private AppUser appUser;
+    private User appUser;
 }
